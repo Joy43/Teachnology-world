@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet";
 
 import Homeiphone from "../Homeiphone/Homeiphone";
 import SliderArea from "../Slider/SliderArea";
+import Services from "../services/services";
 
 const Home = () => {
   return (
@@ -29,7 +30,10 @@ const Home = () => {
       <div>
         <Homeiphone></Homeiphone>
       </div>
-
+{/* service */}
+<div>
+<Services/>
+</div>
       <div>
         <Faq></Faq>
       </div>
