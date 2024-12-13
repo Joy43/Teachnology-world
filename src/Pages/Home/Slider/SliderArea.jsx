@@ -29,7 +29,7 @@ const SliderArea = () => {
   }, [currentSlider]); // Re-run effect when currentSlider changes
 
   return (
-    <div className="max-w-6xl mx-auto h-[540px] md:h-[670px] flex flex-col xl:flex-row items-center overflow-hidden gap-5 lg:gap-10 relative">
+    <div className="max-w-6xl mx-auto h-[540px] md:h-[670px] flex flex-col xl:flex-row items-center overflow-hidden gap-5 lg:gap-10 relative mt-14">
       {/* Navigation buttons */}
       <div className="absolute w-full h-full flex items-center justify-between z-50 px-5">
         {/* Arrow left */}
