@@ -1,0 +1,25 @@
+# Node.js modules
+node_modules/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build output
+build/
+dist/
+
+# Dependency directories
+bower_components/
+
+# IDEs
+.idea/
+.vscode/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
