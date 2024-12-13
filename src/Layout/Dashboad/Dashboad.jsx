@@ -17,7 +17,7 @@ import useAdmin from "../../Hooks/useAdmin";
 import useCart from './../../Hooks/usecart';
 
 const Dashboard = () => {
-  const [cart] = useCart();
+  const [cart,refetch] = useCart();
   const [isAdmin] = useAdmin();
 
   return (

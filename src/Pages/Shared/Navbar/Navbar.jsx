@@ -8,7 +8,7 @@ import useCart from "../../../Hooks/usecart";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
-  const [cart] = useCart();
+  const [cart,refetch] = useCart();
 
   // Logout handler
   const handleLogOut = () => {
@@ -150,7 +150,7 @@ const NavBar = () => {
             </div>
           ) : (
             <Link to="/login" className="btn btn-ghost">
-              Login/Registration
+              Login
             </Link>
           )}
         </div>
