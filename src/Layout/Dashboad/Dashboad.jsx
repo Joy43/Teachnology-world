@@ -10,7 +10,7 @@ import {
   FaShoppingCart,
   FaUsers,
 } from "react-icons/fa";
-import { MdAddShoppingCart } from "react-icons/md";
+import { MdAccountCircle, MdAddShoppingCart } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 
 import useAdmin from "../../Hooks/useAdmin";
@@ -23,11 +23,24 @@ const Dashboard = () => {
   return (
     <div className="flex min-h-screen">
       {/*---------------- Dashboard Sidebar ------------ */}
+       {/* ---------profile---- */}
       <div className="w-64 bg-purple-900 text-white flex flex-col">
-        <div className="p-4 text-2xl font-bold">Dashboard</div>
+        <div className="p-4 text-2xl font-bold"> <p className="">
+            <NavLink
+              to="/dashboard/profile"
+              className="flex items-center space-x-2 hover:bg-purple-800 p-2 rounded"
+            >
+              <MdAccountCircle />
+              <span>Profile</span>
+            </NavLink>
+          </p></div>
+        
+        
+
         <ul className="menu p-4 flex-1 space-y-4 text-white">
           {isAdmin ? (
             <>
+           
               <li className="shadow-lg shadow-slate-300">
                 <NavLink
                   to="/dashboard/adminHome"
@@ -68,6 +81,16 @@ const Dashboard = () => {
           ) : (
             <>
               {/* --------------- User ----------------- */}
+              {/* ---------profile---- */}
+          <li>
+            <NavLink
+              to="/profile"
+              className="flex items-center space-x-2 hover:bg-purple-800 p-2 rounded"
+            >
+              <MdAccountCircle />
+              <span>Profile</span>
+            </NavLink>
+          </li>
               <li className="shadow-lg shadow-slate-300 text-white">
                 <NavLink
                   to="/dashboard/userHome"
@@ -108,6 +131,8 @@ const Dashboard = () => {
           )}
           {/* ------------ Shared Nav Links ---------------- */}
           <div className="divider border-t border-purple-700 my-4"></div>
+
+{/* home */}
           <li>
             <NavLink
               to="/"

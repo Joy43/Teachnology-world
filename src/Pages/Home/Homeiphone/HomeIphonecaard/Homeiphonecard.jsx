@@ -13,7 +13,7 @@ const Homeiphonecard = ({ product }) => {
   const { name, price, image, brand, rating, category, description, stock } = product;
 
   return (
-    <div className="max-w-[350px] space-y-4 rounded-lg bg-white p-6 shadow-lg dark:bg-[#18181B]">
+    <div className="max-w-[350px] space-y-4 rounded-lg  p-6 shadow-lg ">
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
           <ClipLoader color="#4285F4" size={50} />
@@ -29,7 +29,7 @@ const Homeiphonecard = ({ product }) => {
 
       <div className="grid gap-2">
         <h1 className="text-lg font-semibold">{name}</h1>
-        <p className="text-sm text-gray-500 dark:text-white/60 line-clamp-2">{description}</p>
+        <p className="text-sm text-gray-500  line-clamp-2">{description}</p>
         <div className="text-lg font-semibold">${price}</div>
       </div>
 
@@ -41,7 +41,7 @@ const Homeiphonecard = ({ product }) => {
         </NavLink>
         <button
           onClick={handleSeeDetailsClick}
-          className="rounded-md border border-black px-4 py-2 text-sm dark:border-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300 hover:bg-gray-200"
+          className="rounded-md border border-black px-4 py-2 text-sm    transition-colors duration-300 hover:bg-blue-600"
         >
           View Details
         </button>

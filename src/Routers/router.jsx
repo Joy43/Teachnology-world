@@ -21,6 +21,7 @@ import PaymentHistory from "../Pages/Dashboad/payment/pymentstory/Paymentstory";
 
 import CheackPayment from "../Pages/Dashboad/payment/Cheackpayment/CheackPayment";
 import Contactus from "../Pages/Contact/Contactus";
+import profile from './../Pages/Dashboad/Dashboad/profile/profile';
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         element: <CheackPayment></CheackPayment>,
+      },
+      {
+        path:"profile",
+        element:<profile/>
       },
       //----------- admin router-------------
       {

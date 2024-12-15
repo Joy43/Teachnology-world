@@ -53,7 +53,7 @@ const servicesData = [
         "description": "Efficient printers for high-quality prints and versatile functionality." 
     }
 ];
-
+// -----------------slider service-------------
 const Slider = ({ slides, currentSlide, onSlideChange }) => (
     <div className="relative h-72 w-full sm:h-96 md:h-[540px] overflow-hidden rounded-lg">
         {slides.map((slide, index) => (
@@ -64,8 +64,8 @@ const Slider = ({ slides, currentSlide, onSlideChange }) => (
                 }`}
             >
                 <img src={slide.img} alt={slide.title} className="h-full w-full object-cover" />
-                <div className="absolute inset-0 flex flex-col bg-black/40 p-5 text-center text-white">
-                    <div className="mt-auto mb-5 bg-white/40 p-3 rounded-md backdrop-blur-md">
+                <div className="absolute inset-0 flex flex-col  p-5 text-center ">
+                    <div className="mt-auto mb-5  p-3 rounded-md backdrop-blur-md">
                         <h1 className="text-xl font-semibold lg:text-3xl">{slide.title}</h1>
                         <p className="text-sm md:text-base lg:text-lg">{slide.des}</p>
                     </div>
@@ -87,12 +87,12 @@ const Slider = ({ slides, currentSlide, onSlideChange }) => (
         </div>
     </div>
 );
-
+// ---------feature sevice--------------
 const ServiceCard = ({ icon, title, description }) => (
-    <div className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition-shadow duration-300">
+    <div className=" rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition-shadow duration-300">
         <div className="text-5xl mb-4 transition-transform duration-300 transform hover:scale-110">{icon}</div>
         <h3 className="text-2xl font-semibold mb-2 transition-colors duration-300 hover:text-blue-500">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <p className="">{description}</p>
     </div>
 );
 
@@ -125,8 +125,8 @@ const Services = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-10">
                         {/* ------left site steaper------ */}
-                        <div className="p-6 bg-white rounded-xl shadow-lg">
-                            <h3 className="text-xl font-semibold text-indigo-600 text-center mb-8">Follow These Simple Steps</h3>
+                        <div className="p-6  rounded-xl shadow-lg">
+                            <h3 className="text-2xl font-semibold font-serif text-center mb-8">Follow These Simple Steps</h3>
                             <div className="space-y-6">
                                 {["Describe Your Issue", "Get a Quote", "Approve the Service Plan","Send or Bring Your Device","Get Your Device Back"].map((step, i) => (
                                     <div key={i} className="flex items-start">

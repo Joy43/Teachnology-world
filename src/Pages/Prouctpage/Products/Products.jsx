@@ -1,11 +1,10 @@
 import { useState } from "react";
-
 import Cardproducts from "../Cardproducts/Cardproducts";
 import useProduct from "../../../Hooks/useProduct";
+
 const Products = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [product] = useProduct(search);
-  // console.log(product);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -15,30 +14,55 @@ const Products = () => {
 
   return (
     <div>
-      {/*---------- search  ------------------*/}
-
+      {/* Search Section */}
       <div className="mt-6 mb-7">
-      <div className="w-full flex flex-row flex-wrap bg-gray-600 p-10 py-20 justify-center" style={{ backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply', backgroundPosition: 'center center', backgroundImage: "url('https://images.unsplash.com/photo-1573079487717-f8ebae0b1539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')" }}>
-      <div className="w-full text-center">
-        <div className="text-3xl text-center text-white antialiased">Get search</div>
-        <div className="text-xl text-center text-white antialiased">Find out the Technology product around world</div>
+        <div
+          className="w-full flex flex-col items-center bg-gray-600 p-10 py-20 text-white"
+          style={{
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundBlendMode: "multiply",
+            backgroundPosition: "center center",
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1573079487717-f8ebae0b1539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80')",
+          }}
+        >
+          <h1 className="text-4xl font-bold mb-2">Get Search</h1>
+          <p className="text-lg mb-5">
+            Find out the Technology product around the world
+          </p>
+
+          <form
+            onSubmit={handleSearch}
+            className="flex flex-col sm:flex-row items-center w-full max-w-xl"
+          >
+            <input
+              type="text"
+              name="search"
+              className="flex-1 p-3 rounded-t-lg sm:rounded-t-none sm:rounded-l-lg outline-none focus:ring-2 focus:ring-indigo-300"
+              placeholder="Name, Title..."
+            />
+            <button
+              type="submit"
+              className="w-full sm:w-auto bg-indigo-500 text-white p-3 rounded-b-lg sm:rounded-b-none sm:rounded-r-lg hover:bg-indigo-400 transition duration-200"
+            >
+              Search
+            </button>
+          </form>
+        </div>
       </div>
 
-      <form  onSubmit={handleSearch} className="mt-3 flex flex-row flex-wrap" >
-        <div className="text-white w-2/3">
-          <input type="text" name="search" className="w-full p-2 rounded-l-lg" placeholder="Name,Title.." />
-        </div>
-        <div className="w-1/3">
-          <button className="w-full text-white p-2 bg-indigo-400 rounded-r-lg text-center hover:bg-indigo-300" type="submit">Search</button>
-        </div>
-      </form>
-    </div>
-      </div>
-      {/* -------------card product--------------- */}
+      {/* Card Products */}
       <div className="grid md:grid-cols-3 gap-5">
-        {product.map((item) => (
-          <Cardproducts key={item._id} product={item} />
-        ))}
+        {product.length ? (
+          product.map((item) => (
+            <Cardproducts key={item._id} product={item} />
+          ))
+        ) : (
+          <div className="text-center col-span-full text-gray-500">
+            No products found. Try a different search.
+          </div>
+        )}
       </div>
     </div>
   );

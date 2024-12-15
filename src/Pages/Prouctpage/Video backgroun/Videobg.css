@@ -1,45 +1,20 @@
-home{
-   display: grid;
-    align-items: center;
-    justify-content: center;
-  
-   
-  }
-  
-  .home .content{
-    text-align: center;
-  }
-  
- 
-  .home .video-container video{
-   
-    height: 60%;
-    width:100%;
-    object-fit: cover;
-  }
-  
-  .home .controls{
+.vid-btn {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: gray;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-    padding:1rem;
-    border-radius: 5rem;
-    background:rgba(0,0,0,.7);
+.vid-btn:hover,
+.vid-btn:focus {
+  background-color: darkgray;
+}
 
-   
-  }
-  
-  .home .controls .vid-btn{
-    margin-top: 10rem;
-    height:2rem;
-    width:2rem;
-    justify-content: center;
-    text-align: center;
-    display: inline-block;
-    border-radius: 50%;
-    background:#fff;
-    cursor: pointer;
-    margin:0 .5rem;
-  }
-  
-  .home .controls .vid-btn.active{
-    background:#cf4646;
-  }
+.vid-btn.active {
+  background-color: #007bff; 
+  outline: none;
+}

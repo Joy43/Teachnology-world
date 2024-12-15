@@ -59,23 +59,23 @@ const Cardproducts = ({ product }) => {
   };
 
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-gray-200 dark:bg-gray-800">
+    <div className="h-screen w-full flex items-center justify-center  ">
       <div
         data-aos="fade-up-right"
-        className="max-w-sm w-full bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-700"
+        className="max-w-sm w-full  rounded-lg shadow-lg overflow-hidden "
       >
         <div>
           <img
-            className="object-cover h-64 w-full"
+            className="h-[275px] w-[350px] rounded-lg object-cover transition-opacity duration-500"
             src={image}
             alt="product"
           />
         </div>
 
         <div className="flex flex-col gap-1 mt-4 px-4">
-          <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-50">{name}</h2>
-          <span className="font-normal text-gray-600 dark:text-gray-300">{description}</span>
-          <span className="font-semibold text-gray-800 dark:text-gray-50">${price}</span>
+          <h2 className="text-lg font-semibold ">{name}</h2>
+          <span className="font-normal ">{description}</span>
+          <span className="font-semibold ">${price}</span>
         </div>
 
         <div className="flex gap-4 mt-4 px-4">
@@ -97,10 +97,10 @@ const Cardproducts = ({ product }) => {
           ></button>
         </div>
 
-        <div className="mt-4 p-4 border-t border-gray-200 dark:border-gray-500">
+        <div className="mt-4 p-4 border-t border-gray-200 ">
           <button
             onClick={handleAddToCart}
-            className="w-full flex justify-between items-center font-bold cursor-pointer hover:underline text-gray-800 dark:text-gray-50"
+            className="w-full flex justify-between items-center font-bold cursor-pointer hover:underline  "
           >
             <span className="text-base">Add to Cart</span>
             <svg

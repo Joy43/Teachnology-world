@@ -38,7 +38,7 @@ const NavBar = () => {
           />
           <div className="grid">
             <span className="font-semibold">Products</span>
-            <small className="text-sm text-gray-500">Latest offer</small>
+            <small className="text-sm ">Latest offer</small>
           </div>
         </Link>
       </li>
@@ -53,7 +53,7 @@ const NavBar = () => {
           />
           <div className="grid">
             <span className="font-semibold">Contact</span>
-            <small className="text-sm text-gray-500">Contact now</small>
+            <small className="text-sm ">Contact now</small>
           </div>
         </Link>
       </li>
@@ -111,6 +111,8 @@ const NavBar = () => {
 
         {/* User Dropdown */}
         {user ? (
+
+          // -------------user profile----------
           <div className="dropdown dropdown-left">
             <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <img
@@ -124,23 +126,19 @@ const NavBar = () => {
               className="dropdown-content z-[1] card card-compact w-64 p-2 shadow bg-primary text-primary-content"
             >
               <div className="card-body">
-                <p className="text-lg">Name: {user?.displayName}</p>
+               
                 <Link to="/dashboard">
                   <button className="flex items-center gap-2 rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-gray-50 shadow hover:bg-gray-900/80">
-                    <MdOutlineDashboard className="h-5 w-5" />
-                    Dashboard
+                    <MdAccountCircle className="h-5 w-5" />
+                   Profile
                   </button>
                 </Link>
-                <button
-                  className="px-5 py-2.5 rounded-lg text-sm font-medium border border-orange-700 bg-transparent hover:bg-orange-700 text-orange-700 hover:text-white"
-                  onClick={handleLogOut}
-                >
-                  Logout
-                </button>
+               
               </div>
             </div>
           </div>
         ) : (
+          // ---------no user login-----------
           <li className="flex items-center gap-4 hover:text-gray-400 transition-colors duration-300">
         <Link
           to="/login"
