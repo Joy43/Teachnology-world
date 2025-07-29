@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet";
 import Homeiphone from "../Homeiphone/Homeiphone";
 import SliderArea from "../Slider/SliderArea";
 import Services from "../services/services";
+import CommonWrapper from "../../utils/Container";
 
 const Home = () => {
   return (
@@ -16,27 +17,30 @@ const Home = () => {
         <title>Home page</title>
         <meta name="description" content="Nested component" />
       </Helmet>
-      <div>
-<SliderArea/>
-      </div>
-      <div>
-        <Banner></Banner>{" "}
-      </div>
+      <CommonWrapper>
+ <SliderArea/>
+      
+      
+        <Banner></Banner>
+      
 
-      <div>
-        <Cardshow></Cardshow>{" "}
-      </div>
-      {/* <div><Homeiphonecard></Homeiphonecard></div>  */}
-      <div>
+      
+        <Cardshow></Cardshow>
+      
+     
+      
         <Homeiphone></Homeiphone>
-      </div>
+      
 {/* service */}
-<div>
+
 <Services/>
-</div>
-      <div>
+
+      
         <Faq></Faq>
-      </div>
+      </CommonWrapper>
+      
+   
+      
     </>
   );
 };

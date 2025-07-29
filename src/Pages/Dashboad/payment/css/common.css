@@ -1,0 +1,121 @@
+/* Container card */
+.checkout-card {
+  max-width: 480px;
+  margin: 60px auto;
+  padding: 30px 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+}
+
+/* Title */
+.checkout-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+  text-align: center;
+  color: #4F46E5; /* Indigo 600 */
+}
+
+/* Form layout */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.form-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151; /* Gray-700 */
+}
+
+/* Stripe elements styling wrapper */
+.StripeElement {
+  padding: 12px 14px;
+  border: 1.5px solid #d1d5db; /* Gray-300 */
+  border-radius: 8px;
+  background-color: #f9fafb; /* Gray-50 */
+  transition: border-color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.StripeElement--focus {
+  border-color: #4F46E5; /* Indigo 600 */
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.3);
+  outline: none;
+}
+
+/* Row for expiry and cvc */
+.card-details-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card-details-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Button */
+.pay-button {
+  margin-top: 32px;
+  background-color: #4F46E5; /* Indigo 600 */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pay-button:hover:not(:disabled) {
+  background-color: #4338ca; /* Indigo 700 */
+  box-shadow: 0 8px 20px rgba(67, 56, 202, 0.4);
+}
+
+.pay-button:disabled,
+.pay-button[aria-disabled='true'] {
+  background-color: #a5b4fc; /* Indigo 300 */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Error message */
+.error-message {
+  margin-top: 18px;
+  color: #dc2626; /* Red 600 */
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Success message */
+.success-message {
+  margin-top: 18px;
+  color: #2563eb; /* Blue 600 */
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .checkout-card {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .card-details-row {
+    flex-direction: column;
+  }
+}
