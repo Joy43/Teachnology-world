@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { ClipLoader } from "react-spinners";
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
 
 const Homeiphonecard = ({ product }) => {
   const [loading, setLoading] = useState(true);
@@ -10,81 +10,132 @@ const Homeiphonecard = ({ product }) => {
   const handleSeeDetailsClick = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const { name, price, image, brand, rating, category, description, stock } = product;
+  const { name, price, image, brand, rating, category, description, stock } =
+    product;
 
   return (
-    <div className="max-w-[350px] space-y-4 rounded-lg  p-6 shadow-lg ">
+    <div className="relative rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-[1.03] hover:shadow-2xl duration-300">
+      {/* Loader Overlay */}
       {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
-          <ClipLoader color="#4285F4" size={50} />
+        <div className="absolute inset-0 flex items-center justify-center bg-base-100 bg-opacity-80 z-10 rounded-lg">
+          <ClipLoader color="#3B82F6" size={40} />
         </div>
       )}
 
+      {/* Product Image */}
       <img
-        className={`h-[275px] w-[350px] rounded-lg object-cover transition-opacity duration-500 ${loading ? 'opacity-0' : 'opacity-100'}`}
         src={image}
         alt={name}
         onLoad={handleImageLoad}
+        className={`w-full h-64 object-cover rounded-t-lg transition-opacity duration-500 ${
+          loading ? 'opacity-0' : 'opacity-100'
+        }`}
       />
 
-      <div className="grid gap-2">
-        <h1 className="text-lg font-semibold">{name}</h1>
-        <p className="text-sm text-gray-500  line-clamp-2">{description}</p>
-        <div className="text-lg font-semibold">${price}</div>
-      </div>
+      {/* Content */}
+      <div className="p-6 flex flex-col justify-between h-[260px] bg-base-100">
+        <div>
+          <h2 className="text-xl font-semibold truncate" title={name}>
+            {name}
+          </h2>
+          <p className="mt-2 text-base-content text-opacity-70 text-sm line-clamp-3">
+            {description}
+          </p>
+        </div>
 
-      <div className="flex gap-4">
-        <NavLink to="/product">
-          <button className="rounded-lg bg-slate-800 px-6 py-2 text-sm font-semibold text-white transition-colors duration-300 hover:bg-slate-950">
-            Show All
-          </button>
-        </NavLink>
-        <button
-          onClick={handleSeeDetailsClick}
-          className="rounded-md border border-black px-4 py-2 text-sm    transition-colors duration-300 hover:bg-blue-600"
-        >
-          View Details
-        </button>
-      </div>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="w-full max-w-lg p-6 bg-white rounded-lg shadow-xl dark:bg-gray-800">
-            <button
-              onClick={closeModal}
-              className="text-gray-500 hover:text-red-600 transition-colors duration-300 absolute top-4 right-4"
-            >
-              &times;
-            </button>
-
-            <div className="flex gap-4">
-              <img className="w-32 h-32 rounded-lg object-cover" src={image} alt={name} />
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">{brand}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{category}</p>
-              </div>
+        <div className="mt-4 flex items-center justify-between">
+          <span className="text-2xl font-bold">{`$${price}`}</span>
+          <div className="flex items-center space-x-2 text-sm">
+            <div className="badge badge-warning font-semibold select-none">
+              ⭐ {rating}
             </div>
-
-            <div className="mt-4">
-              <h3 className="text-2xl font-medium text-gray-900 dark:text-gray-100">{name}</h3>
-              <div className="flex flex-wrap gap-2 text-sm font-medium mt-2">
-                <span className="px-2 py-1 bg-blue-100 text-blue-600 rounded-lg">Rating: {rating}</span>
-                <span className="px-2 py-1 bg-yellow-100 text-yellow-600 rounded-lg">${price}</span>
-                <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded-lg">Stock: {stock}</span>
-              </div>
-              <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">{description}</p>
-            </div>
-
-            <div className="mt-4 text-center">
-              <button
-                onClick={closeModal}
-                className="rounded-md border border-red-500 px-4 py-2 text-red-500 hover:bg-red-100 transition-colors duration-300"
-              >
-                Close
-              </button>
+            <div className="badge badge-outline select-none">
+              Stock: {stock}
             </div>
           </div>
         </div>
+
+        <div className="mt-5 flex gap-3">
+          <NavLink
+            to="/product"
+            className="btn btn-primary flex-1 text-base font-semibold"
+          >
+            Show All
+          </NavLink>
+          <button
+            onClick={handleSeeDetailsClick}
+            className="btn btn-outline btn-primary flex-1 text-base font-semibold"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <>
+          <input
+            type="checkbox"
+            id={`modal-${product.id}`}
+            className="modal-toggle"
+            checked
+            readOnly
+          />
+          <label
+            htmlFor={`modal-${product.id}`}
+            className="modal cursor-pointer fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center p-4"
+          >
+            <label
+              className="modal-box max-w-3xl relative bg-base-100 rounded-lg p-6 overflow-y-auto max-h-[90vh]"
+              htmlFor=""
+              onClick={e => e.stopPropagation()} // prevent modal close on content click
+            >
+              {/* Close Button */}
+              <button
+                onClick={closeModal}
+                aria-label="Close modal"
+                className="btn btn-sm btn-circle absolute right-4 top-4"
+              >
+                ✕
+              </button>
+
+              <div className="flex flex-col sm:flex-row gap-6">
+                <img
+                  src={image}
+                  alt={name}
+                  className="w-full sm:w-48 h-48 object-cover rounded-lg shadow-md"
+                />
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-2">{name}</h3>
+                  <p className="text-base-content text-opacity-70 mb-4">
+                    {description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 mb-4">
+                    <span className="badge badge-primary font-semibold">
+                      Brand: {brand}
+                    </span>
+                    <span className="badge badge-secondary font-semibold">
+                      Category: {category}
+                    </span>
+                    <span className="badge badge-warning font-semibold">
+                      Rating: {rating}
+                    </span>
+                    <span className="badge badge-outline font-semibold">
+                      Stock: {stock}
+                    </span>
+                  </div>
+
+                  <div className="text-3xl font-extrabold mb-6">${price}</div>
+
+                  <button onClick={closeModal} className="btn btn-error w-full">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </label>
+          </label>
+        </>
       )}
     </div>
   );

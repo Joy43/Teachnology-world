@@ -1,178 +1,220 @@
 import React, { useState, useEffect } from 'react';
 
 const sliderData = [
-    {
-        "img": "https://i.ibb.co/yfHqzw8/computer-service-at-home-482x482.png",
-        "title": "Computer Service at Home",
-        "des": "Reliable and professional computer repair services delivered right to your home."
-    },
-    {
-        "img": "https://i.ibb.co/ZBJmt9D/laptop-service-desktop-banner-1290x500.png",
-        "title": "Laptop Repair Service",
-        "des": "Expert solutions for all laptop-related issues, ensuring optimal performance."
-    },
-    {
-        "img": "https://i.ibb.co/99rgVcP/desktop-repair-service-482x482.png",
-        "title": "Desktop Repair Service",
-        "des": "Comprehensive desktop repair services to keep your system running smoothly."
-    },
-   
-   
-  
+  {
+    img: 'https://i.ibb.co/yfHqzw8/computer-service-at-home-482x482.png',
+    title: 'Computer Service at Home',
+    des: 'Reliable and professional computer repair services delivered right to your home.',
+  },
+  {
+    img: 'https://i.ibb.co/ZBJmt9D/laptop-service-desktop-banner-1290x500.png',
+    title: 'Laptop Repair Service',
+    des: 'Expert solutions for all laptop-related issues, ensuring optimal performance.',
+  },
+  {
+    img: 'https://i.ibb.co/99rgVcP/desktop-repair-service-482x482.png',
+    title: 'Desktop Repair Service',
+    des: 'Comprehensive desktop repair services to keep your system running smoothly.',
+  },
 ];
 
 const servicesData = [
-    { 
-        "icon": "📱", 
-        "title": "Smartphone", 
-        "description": "High-performance smartphones with cutting-edge technology and sleek designs." 
-    },
-    { 
-        "icon": "💻", 
-        "title": "Laptop", 
-        "description": "Powerful laptops suitable for work, gaming, and multimedia." 
-    },
-    { 
-        "icon": "🎧", 
-        "title": "Headphones", 
-        "description": "Wireless and noise-cancelling headphones for immersive audio experiences." 
-    },
-    { 
-        "icon": "📷", 
-        "title": "Camera", 
-        "description": "High-resolution cameras for capturing stunning photos and videos." 
-    },
-    { 
-        "icon": "🔊", 
-        "title": "Bluetooth Speaker", 
-        "description": "Portable speakers with powerful sound and long battery life." 
-    },
-    { 
-        "icon": "🖨️", 
-        "title": "Printer", 
-        "description": "Efficient printers for high-quality prints and versatile functionality." 
-    }
+  {
+    icon: '📱',
+    title: 'Smartphone',
+    description:
+      'High-performance smartphones with cutting-edge technology and sleek designs.',
+  },
+  {
+    icon: '💻',
+    title: 'Laptop',
+    description: 'Powerful laptops suitable for work, gaming, and multimedia.',
+  },
+  {
+    icon: '🎧',
+    title: 'Headphones',
+    description:
+      'Wireless and noise-cancelling headphones for immersive audio experiences.',
+  },
+  {
+    icon: '📷',
+    title: 'Camera',
+    description:
+      'High-resolution cameras for capturing stunning photos and videos.',
+  },
+  {
+    icon: '🔊',
+    title: 'Bluetooth Speaker',
+    description: 'Portable speakers with powerful sound and long battery life.',
+  },
+  {
+    icon: '🖨️',
+    title: 'Printer',
+    description:
+      'Efficient printers for high-quality prints and versatile functionality.',
+  },
 ];
-// -----------------slider service-------------
+
+// Slider Component
 const Slider = ({ slides, currentSlide, onSlideChange }) => (
-    <div className="relative h-72 w-full sm:h-96 md:h-[540px] overflow-hidden rounded-lg">
-        {slides.map((slide, index) => (
-            <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-500 ease-linear ${
-                    index === currentSlide ? 'opacity-100 visible' : 'opacity-0 invisible'
-                }`}
-            >
-                <img src={slide.img} alt={slide.title} className="h-full w-full object-cover" />
-                <div className="absolute inset-0 flex flex-col  p-5 text-center ">
-                    <div className="mt-auto mb-5  p-3 rounded-md backdrop-blur-md">
-                        <h1 className="text-xl font-semibold lg:text-3xl">{slide.title}</h1>
-                        <p className="text-sm md:text-base lg:text-lg">{slide.des}</p>
-                    </div>
-                </div>
-            </div>
-        ))}
-        <div className="flex flex-row sm:flex-col items-center gap-3 absolute top-0 right-0 p-4">
-            {slides.map((_, index) => (
-                <img
-                    key={index}
-                    src={slides[index].img}
-                    alt={slides[index].title}
-                    className={`h-10 w-16 sm:h-12 sm:w-20 object-cover rounded-md cursor-pointer transition-transform duration-300 ${
-                        currentSlide === index ? 'ring-2 ring-sky-500' : 'opacity-60'
-                    }`}
-                    onClick={() => onSlideChange(index)}
-                />
-            ))}
+  <section className="relative rounded-lg overflow-hidden shadow-lg max-w-6xl mx-auto h-64 sm:h-96 md:h-[540px]">
+    {slides.map((slide, i) => (
+      <article
+        key={i}
+        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+          i === currentSlide
+            ? 'opacity-100 visible z-10'
+            : 'opacity-0 invisible z-0'
+        }`}
+        aria-hidden={i !== currentSlide}
+      >
+        <img
+          src={slide.img}
+          alt={slide.title}
+          className="object-cover w-full h-full"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-12 bg-base-200 bg-opacity-60 backdrop-blur-sm">
+          <h2 className="text-2xl sm:text-4xl font-extrabold">{slide.title}</h2>
+          <p className="mt-2 text-sm sm:text-lg max-w-3xl">{slide.des}</p>
         </div>
-    </div>
+      </article>
+    ))}
+    {/* Navigation Thumbnails */}
+    <nav className="absolute top-4 right-4 flex flex-col gap-3 z-20">
+      {slides.map((slide, i) => (
+        <button
+          key={i}
+          className={`rounded-md overflow-hidden ring-2 ring-offset-2 focus:outline-none ${
+            i === currentSlide
+              ? 'ring-primary ring-offset-base-100'
+              : 'ring-transparent opacity-60 hover:opacity-100'
+          }`}
+          onClick={() => onSlideChange(i)}
+          aria-label={`Slide ${i + 1}: ${slide.title}`}
+          type="button"
+        >
+          <img
+            src={slide.img}
+            alt={slide.title}
+            className="h-12 w-20 object-cover"
+            loading="lazy"
+          />
+        </button>
+      ))}
+    </nav>
+  </section>
 );
-// ---------feature sevice--------------
+
+// Service Card Component
 const ServiceCard = ({ icon, title, description }) => (
-    <div className=" rounded-lg shadow-lg p-6 text-center hover:shadow-2xl transition-shadow duration-300">
-        <div className="text-5xl mb-4 transition-transform duration-300 transform hover:scale-110">{icon}</div>
-        <h3 className="text-2xl font-semibold mb-2 transition-colors duration-300 hover:text-blue-500">{title}</h3>
-        <p className="">{description}</p>
-    </div>
+  <div className="bg-base-100 rounded-xl shadow-md p-6 text-center transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+    <div className="text-6xl mb-4 select-none">{icon}</div>
+    <h3 className="text-2xl font-semibold mb-2">{title}</h3>
+    <p className="text-base-content text-opacity-80">{description}</p>
+  </div>
 );
 
+// Main Services Component
 const Services = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentSlide((prev) => (prev === sliderData.length - 1 ? 0 : prev + 1));
-        }, 5000);
-        return () => clearInterval(intervalId);
-    }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide(prev => (prev === sliderData.length - 1 ? 0 : prev + 1));
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
 
-    return (
-        <div className="p-5">
-            <div className="flex flex-col-reverse sm:flex-row justify-between items-center gap-5">
-                <Slider slides={sliderData} currentSlide={currentSlide} onSlideChange={setCurrentSlide} />
-            </div>
+  return (
+    <main className="px-4 py-10 max-w-7xl mx-auto">
+      {/* Slider */}
+      <Slider
+        slides={sliderData}
+        currentSlide={currentSlide}
+        onSlideChange={setCurrentSlide}
+      />
 
-            <div className="container mx-auto p-6">
-                <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {servicesData.map((service, index) => (
-                        <ServiceCard key={index} {...service} />
-                    ))}
-                </div>
-            </div>
-{/* ---------- help from data------- */}
-            <form action="https://fabform.io/f/xxxxx" method="post" className="py-24">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-10">
-                        {/* ------left site steaper------ */}
-                        <div className="p-6  rounded-xl shadow-lg">
-                            <h3 className="text-2xl font-semibold font-serif text-center mb-8">Follow These Simple Steps</h3>
-                            <div className="space-y-6">
-                                {["Describe Your Issue", "Get a Quote", "Approve the Service Plan","Send or Bring Your Device","Get Your Device Back"].map((step, i) => (
-                                    <div key={i} className="flex items-start">
-                                        <div className="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-500 text-white border-4 border-white text-xl font-semibold">
-                                            {i + 1}
-                                        </div>
-                                        <div className="ml-5 bg-gray-100 p-4 rounded-lg flex-1">
-                                            <h4 className="text-lg font-semibold text-gray-900">{step}</h4>
-                                            <p className="mt-2 text-gray-600">Lorem ipsum dolor sit amet.</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-{/* ----------message from data------------ */}
-                        <div className="bg-gray-50 p-6 lg:p-12 rounded-2xl">
-                            <h2 className="text-indigo-600 text-4xl font-semibold mb-8">Send Us A Message</h2>
-                            {['Name', 'Email', 'Phone Number','Service Name'].map((placeholder, i) => (
-                                <input
-                                    key={i}
-                                    type={placeholder === 'Email' ? 'email' : 'text'}
-                                    name={placeholder.toLowerCase()}
-                                    placeholder={placeholder}
-                                    className="w-full h-12 mb-6 pl-4 border border-gray-200 rounded-full focus:outline-none"
-                                    required={placeholder !== 'Phone Number'}
-                                />
-                            ))}
-                            <textarea
-                                name="message"
-                                rows="4"
-                                className="w-full mb-6 p-4 border border-gray-200 rounded-xl focus:outline-none"
-                                placeholder="About the issue"
-                                required
-                            ></textarea>
-                            <button
-                                type="submit"
-                                className="w-full h-12 bg-indigo-600 text-white rounded-full hover:bg-indigo-700"
-                            >
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
+      {/* Services Grid */}
+      <section className="mt-20">
+        <h2 className="text-center text-4xl font-extrabold mb-16">
+          Our Services
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {servicesData.map((service, idx) => (
+            <ServiceCard key={idx} {...service} />
+          ))}
         </div>
-    );
+      </section>
+
+      {/* Stepper + Contact Form */}
+      <section className="mt-28 grid grid-cols-1 lg:grid-cols-2 gap-14">
+        {/* Stepper */}
+        <div className="bg-base-200 rounded-xl p-8 shadow-lg">
+          <h3 className="text-3xl font-semibold text-center mb-10 font-serif">
+            Follow These Simple Steps
+          </h3>
+          <div className="space-y-8">
+            {[
+              'Describe Your Issue',
+              'Get a Quote',
+              'Approve the Service Plan',
+              'Send or Bring Your Device',
+              'Get Your Device Back',
+            ].map((step, i) => (
+              <div key={i} className="flex items-start gap-5">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-content font-bold text-lg select-none">
+                  {i + 1}
+                </div>
+                <div className="bg-base-100 p-5 rounded-xl shadow-sm flex-1">
+                  <h4 className="text-xl font-semibold">{step}</h4>
+                  <p className="text-base-content text-opacity-70 text-sm mt-1">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <form
+          action="https://fabform.io/f/xxxxx"
+          method="post"
+          className="bg-base-200 p-8 rounded-xl shadow-lg space-y-8"
+        >
+          <h2 className="text-4xl font-extrabold mb-6 text-primary text-center">
+            Send Us A Message
+          </h2>
+          {['Name', 'Email', 'Phone Number', 'Service Name'].map(
+            (field, idx) => (
+              <input
+                key={idx}
+                type={field === 'Email' ? 'email' : 'text'}
+                name={field.toLowerCase().replace(/\s/g, '')}
+                placeholder={field}
+                required={field !== 'Phone Number'}
+                className="input input-bordered input-primary w-full rounded-full px-4 py-3 text-base placeholder:text-base-content placeholder:text-opacity-60"
+              />
+            )
+          )}
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="About the issue"
+            required
+            className="textarea textarea-primary w-full rounded-xl px-4 py-3 text-base placeholder:text-base-content placeholder:text-opacity-60"
+          ></textarea>
+          <button
+            type="submit"
+            className="btn btn-primary w-full rounded-full text-lg font-semibold hover:brightness-110 transition"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+    </main>
+  );
 };
 
 export default Services;

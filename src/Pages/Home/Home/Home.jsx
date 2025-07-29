@@ -18,22 +18,14 @@ const Home = () => {
         <meta name="description" content="Nested component" />
       </Helmet>
       <CommonWrapper>
- <SliderArea/>
-      
-      
-        <Banner></Banner>
-      
-
-      
-        <Cardshow></Cardshow>
-      
-     
-      
-        <Homeiphone></Homeiphone>
+  <SliderArea/>
+  <Banner/>
+  <Cardshow/>
+  <Homeiphone/>
       
 {/* service */}
 
-<Services/>
+          <Services/>
 
       
         <Faq></Faq>

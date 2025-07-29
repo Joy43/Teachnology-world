@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 const SliderArea = () => {
   const [currentSlider, setCurrentSlider] = useState(0);
   const sliderImages = [
-    { url: "https://i.ibb.co/JFmR5RJ/1.png" },
-    { url: "https://i.ibb.co/8Nt8kHx/2.png" },
-    { url: "https://i.ibb.co/7CXJyQ8/3.png" },
-    { url: "https://i.ibb.co/vcfpMY8/4.png" },
-    { url: "https://i.ibb.co/T4GRPJJ/5.png" },
+    { url: 'https://i.ibb.co/JFmR5RJ/1.png' },
+    { url: 'https://i.ibb.co/8Nt8kHx/2.png' },
+    { url: 'https://i.ibb.co/7CXJyQ8/3.png' },
+    { url: 'https://i.ibb.co/vcfpMY8/4.png' },
+    { url: 'https://i.ibb.co/T4GRPJJ/5.png' },
   ];
 
   // Function to navigate to the previous slide
   const prevSlider = () => {
-    setCurrentSlider((prev) => (prev === 0 ? sliderImages.length - 1 : prev - 1));
+    setCurrentSlider(prev => (prev === 0 ? sliderImages.length - 1 : prev - 1));
   };
 
   // Function to navigate to the next slide
   const nextSlider = () => {
-    setCurrentSlider((prev) => (prev === sliderImages.length - 1 ? 0 : prev + 1));
+    setCurrentSlider(prev => (prev === sliderImages.length - 1 ? 0 : prev + 1));
   };
 
   // Auto-change slider using useEffect
@@ -29,7 +29,7 @@ const SliderArea = () => {
   }, [currentSlider]); // Re-run effect when currentSlider changes
 
   return (
-    <div className="max-w-6xl mx-auto h-[540px] md:h-[670px] flex flex-col xl:flex-row items-center overflow-hidden gap-5 lg:gap-10 relative mt-14">
+    <div className="max-w-7xl mx-auto h-[540px] md:h-[670px] flex flex-col xl:flex-row items-center overflow-hidden gap-5 lg:gap-10 relative mt-14">
       {/* Navigation buttons */}
       <div className="absolute w-full h-full flex items-center justify-between z-50 px-5">
         {/* Arrow left */}
@@ -79,10 +79,10 @@ const SliderArea = () => {
             key={index}
             className={`${
               currentSlider === index
-                ? "h-[240px] sm:h-[310px] md:h-[480px] lg:h-[580px]"
-                : "h-[220px] sm:h-[260px] md:h-[380px] lg:h-[480px] scale-95 opacity-40"
+                ? 'h-[240px] sm:h-[310px] md:h-[480px] lg:h-[580px]'
+                : 'h-[220px] sm:h-[260px] md:h-[380px] lg:h-[480px] scale-95 opacity-40'
             } min-w-[50%] relative duration-200`}
-            style={{ perspective: "200px" }}
+            style={{ perspective: '200px' }}
           >
             <img
               src={slide.url}
@@ -91,12 +91,12 @@ const SliderArea = () => {
               style={{
                 transform: `${
                   currentSlider - 1 === index
-                    ? "rotateY(4deg)"
+                    ? 'rotateY(4deg)'
                     : currentSlider + 1 === index
-                    ? "rotateY(-4deg)"
-                    : ""
+                      ? 'rotateY(-4deg)'
+                      : ''
                 }`,
-                transformStyle: "preserve-3d",
+                transformStyle: 'preserve-3d',
               }}
             />
           </div>
